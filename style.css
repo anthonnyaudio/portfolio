@@ -1,0 +1,11 @@
+body { 
+    background-color: #121212; 
+    color: #f3f4f6; 
+}
+.text-purple { color: #a855f7; }
+.bg-purple { background-color: #a855f7; }
+.border-purple { border-color: #a855f7; }
+.hover-purple:hover { 
+    color: #a855f7; 
+    filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.6)); 
+}

@@ -3,130 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anthonny Santos | Engenharia de Áudio</title>
+    <title>Anthonny Pedro Santos Araujo | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .project-card { aspect-ratio: 1 / 1; }
-        .hidden-item { display: none; }
-    </style>
-    <script>
-        function filterSelection(category) {
-            let items = document.getElementsByClassName("filter-item");
-            for (let i = 0; i < items.length; i++) {
-                if (category === 'all') {
-                    items[i].classList.remove("hidden-item");
-                } else {
-                    if (items[i].classList.contains(category)) {
-                        items[i].classList.remove("hidden-item");
-                    } else {
-                        items[i].classList.add("hidden-item");
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#121212] text-gray-200 font-sans min-h-screen flex flex-col">
-
-    <!-- Cabeçalho -->
-    <header class="py-20 text-center space-y-6">
-        <h1 class="text-5xl md:text-6xl font-extrabold tracking-widest text-white uppercase">Anthonny Santos</h1>
-        
-        <!-- Efeito Fade & Glow -->
-        <div class="group flex flex-wrap justify-center items-center gap-2 text-sm md:text-base font-semibold tracking-wide text-gray-300">
-            <span class="transition-all duration-500 cursor-pointer group-hover:text-gray-700 hover:!text-[#a855f7] hover:!drop-shadow-[0_0_12px_rgba(168,85,247,0.9)]">Engenharia de Mixagem</span>
-            <span class="text-gray-700">|</span>
-            <span class="transition-all duration-500 cursor-pointer group-hover:text-gray-700 hover:!text-[#a855f7] hover:!drop-shadow-[0_0_12px_rgba(168,85,247,0.9)]">Produção Musical</span>
-            <span class="text-gray-700">|</span>
-            <span class="transition-all duration-500 cursor-pointer group-hover:text-gray-700 hover:!text-[#a855f7] hover:!drop-shadow-[0_0_12px_rgba(168,85,247,0.9)]">Pós-Produção</span>
+<body class="font-sans antialiased min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="py-12 flex flex-col items-center justify-center border-b border-gray-800">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-4 uppercase">Anthonny Araujo</h1>
+        <div class="group flex space-x-2 text-sm md:text-base font-medium text-gray-400">
+            <span class="transition-all duration-500 hover:text-[#a855f7] hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)] group-hover:opacity-50 hover:!opacity-100 cursor-default">Engenharia de Mixagem</span>
+            <span>|</span>
+            <span class="transition-all duration-500 hover:text-[#a855f7] hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)] group-hover:opacity-50 hover:!opacity-100 cursor-default">Produção Musical</span>
+            <span>|</span>
+            <span class="transition-all duration-500 hover:text-[#a855f7] hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)] group-hover:opacity-50 hover:!opacity-100 cursor-default">Pós-Produção</span>
         </div>
     </header>
 
-    <!-- Filtros (Abas) -->
-    <div class="flex flex-wrap justify-center gap-6 pb-12 px-4">
-        <button onclick="filterSelection('all')" class="text-gray-400 hover:text-[#a855f7] transition-colors uppercase tracking-wider text-sm font-bold">Todos os Trabalhos</button>
-        <button onclick="filterSelection('music')" class="text-gray-400 hover:text-[#a855f7] transition-colors uppercase tracking-wider text-sm font-bold">Música</button>
-        <button onclick="filterSelection('audio-visual')" class="text-gray-400 hover:text-[#a855f7] transition-colors uppercase tracking-wider text-sm font-bold">Audiovisual & Dublagem</button>
-    </div>
+    <!-- Filters -->
+    <nav class="flex justify-center py-8 space-x-6 text-sm font-semibold uppercase tracking-widest text-gray-400">
+        <button class="hover:text-white transition-colors text-white" onclick="filterSelection(event, 'all')">Todos os Trabalhos</button>
+        <button class="hover:text-white transition-colors" onclick="filterSelection(event, 'music')">Música</button>
+        <button class="hover:text-white transition-colors" onclick="filterSelection(event, 'audiovisual')">Audiovisual & Dublagem</button>
+    </nav>
 
-    <!-- Grid do Portfólio -->
-    <main class="flex-grow container mx-auto px-4 pb-20">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            
-            <!-- Projeto 1: Audimal -->
-            <div class="filter-item music relative group bg-[#1a1a1a] project-card cursor-pointer border border-transparent hover:border-[#a855f7] transition-all duration-300">
-                <div class="absolute inset-0 flex items-center justify-center text-gray-700 group-hover:text-[#a855f7] transition-colors">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+    <!-- Portfolio Grid -->
+    <main class="flex-grow container mx-auto px-4 pb-16">
+        <h2 class="text-2xl font-bold text-center mb-12 uppercase tracking-widest">Projetos Recentes</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+            <!-- Projeto Audimal -->
+            <div class="portfolio-item music relative aspect-square bg-gray-900 group cursor-pointer overflow-hidden border border-gray-800 hover:border-[#a855f7] transition-all duration-300">
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-600 group-hover:text-[#a855f7] transition-colors duration-300">
+                    <svg class="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+                    <span class="text-sm font-medium uppercase tracking-widest">Capa do Projeto</span>
                 </div>
-                <div class="absolute inset-0 bg-black bg-opacity-85 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center">
-                    <h3 class="text-white font-bold text-lg tracking-wide mb-1">Projeto Audimal</h3>
-                    <p class="text-[#a855f7] text-xs uppercase tracking-widest">Produção & Mixagem</p>
+                <div class="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center">
+                    <h3 class="text-xl font-bold text-white mb-2">Projeto Audimal</h3>
+                    <p class="text-gray-300 mb-1">Lançamento / Single</p>
+                    <p class="text-[#a855f7] font-semibold text-sm">Produção, Baixo, Synth, Bateria, Voz</p>
                 </div>
             </div>
 
-            <!-- Projeto 2: Eis-me Aqui -->
-            <div class="filter-item audio-visual relative group bg-[#1a1a1a] project-card cursor-pointer border border-transparent hover:border-[#a855f7] transition-all duration-300">
-                <div class="absolute inset-0 flex items-center justify-center text-gray-700 group-hover:text-[#a855f7] transition-colors">
-                     <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+            <!-- Eis-me Aqui -->
+            <div class="portfolio-item audiovisual relative aspect-square bg-gray-900 group cursor-pointer overflow-hidden border border-gray-800 hover:border-[#a855f7] transition-all duration-300">
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-600 group-hover:text-[#a855f7] transition-colors duration-300">
+                    <svg class="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                    <span class="text-sm font-medium uppercase tracking-widest">Capa do Podcast</span>
                 </div>
-                <div class="absolute inset-0 bg-black bg-opacity-85 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center">
-                    <h3 class="text-white font-bold text-lg tracking-wide mb-1">Eis-me Aqui</h3>
-                    <p class="text-[#a855f7] text-xs uppercase tracking-widest">Edição de Áudio</p>
-                </div>
-            </div>
-            
-            <!-- Projeto 3: Documentário -->
-            <div class="filter-item audio-visual relative group bg-[#1a1a1a] project-card cursor-pointer border border-transparent hover:border-[#a855f7] transition-all duration-300">
-                <div class="absolute inset-0 flex items-center justify-center text-gray-700 group-hover:text-[#a855f7] transition-colors">
-                     <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                </div>
-                <div class="absolute inset-0 bg-black bg-opacity-85 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center">
-                    <h3 class="text-white font-bold text-lg tracking-wide mb-1">Documentário</h3>
-                    <p class="text-[#a855f7] text-xs uppercase tracking-widest">Dublagem & Sound Design</p>
+                <div class="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center">
+                    <h3 class="text-xl font-bold text-white mb-2">Podcast "Eis-me Aqui"</h3>
+                    <p class="text-gray-300 mb-1">Edição de Áudio & Pós</p>
+                    <p class="text-[#a855f7] font-semibold text-sm">Edição de Áudio, Limpeza</p>
                 </div>
             </div>
 
-            <!-- Projeto 4: Exemplo -->
-             <div class="filter-item music relative group bg-[#1a1a1a] project-card cursor-pointer border border-transparent hover:border-[#a855f7] transition-all duration-300">
-                <div class="absolute inset-0 flex items-center justify-center text-gray-700 group-hover:text-[#a855f7] transition-colors">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <!-- Documentário -->
+            <div class="portfolio-item audiovisual relative aspect-square bg-gray-900 group cursor-pointer overflow-hidden border border-gray-800 hover:border-[#a855f7] transition-all duration-300">
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-600 group-hover:text-[#a855f7] transition-colors duration-300">
+                    <svg class="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    <span class="text-sm font-medium uppercase tracking-widest">Pôster do Filme</span>
                 </div>
-                <div class="absolute inset-0 bg-black bg-opacity-85 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center">
-                    <h3 class="text-white font-bold text-lg tracking-wide mb-1">Trabalho Adicional</h3>
-                    <p class="text-[#a855f7] text-xs uppercase tracking-widest">Mix & Master</p>
+                <div class="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center">
+                    <h3 class="text-xl font-bold text-white mb-2">Documentário Dublado</h3>
+                    <p class="text-gray-300 mb-1">Dublagem & Mixagem</p>
+                    <p class="text-[#a855f7] font-semibold text-sm">Gravação de Áudio, Produção, Edição</p>
                 </div>
             </div>
-
         </div>
     </main>
 
-    <!-- Rodapé & Contato -->
-    <footer class="bg-black py-20 border-t border-gray-900">
-        <div class="container mx-auto px-4 flex flex-col items-center">
+    <!-- Contact & Footer -->
+    <footer class="bg-black border-t border-gray-800 py-16">
+        <div class="container mx-auto px-4 max-w-2xl flex flex-col items-center">
             
-            <!-- Botão de Briefing -->
-            <a href="https://forms.gle/dpM31VCYpy1TJ16q8" target="_blank" rel="noopener noreferrer" 
-               class="inline-block bg-[#a855f7] hover:bg-[#9333ea] text-white font-bold py-4 px-10 rounded shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:shadow-[0_0_25px_rgba(168,85,247,0.6)] transition-all duration-300 mb-20 text-sm md:text-base uppercase tracking-widest">
+            <a href="#" class="mb-16 inline-block bg-transparent border-2 border-[#a855f7] text-[#a855f7] hover:bg-[#a855f7] hover:text-white transition-all duration-300 font-bold uppercase tracking-widest py-4 px-8 rounded-none">
                 Solicitar Orçamento de Mix / Master
             </a>
 
-            <!-- Formulário Secundário -->
-            <div class="w-full max-w-md">
-                <form class="space-y-4">
-                    <input type="text" placeholder="Nome" class="w-full bg-[#121212] border border-gray-800 p-3 text-white focus:outline-none focus:border-[#a855f7] transition-colors">
-                    <input type="email" placeholder="E-mail" class="w-full bg-[#121212] border border-gray-800 p-3 text-white focus:outline-none focus:border-[#a855f7] transition-colors">
-                    <textarea placeholder="Mensagem..." rows="3" class="w-full bg-[#121212] border border-gray-800 p-3 text-white focus:outline-none focus:border-[#a855f7] transition-colors resize-none"></textarea>
-                    <button type="button" class="w-full border border-gray-700 text-gray-400 hover:border-[#a855f7] hover:text-[#a855f7] font-bold py-3 px-4 transition-colors duration-300 uppercase tracking-widest text-xs">
-                        Enviar
-                    </button>
-                </form>
-            </div>
+            <h2 class="text-2xl font-bold text-center mb-8 uppercase tracking-widest w-full">Contato Rápido</h2>
             
-            <div class="mt-16 text-gray-700 text-xs tracking-widest uppercase">
-                © 2026 Anthonny Santos
+            <form id="contact-form" class="w-full space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" placeholder="Nome" required class="bg-gray-900 border border-gray-800 focus:border-[#a855f7] text-white p-4 w-full outline-none transition-colors">
+                    <input type="email" placeholder="E-mail" required class="bg-gray-900 border border-gray-800 focus:border-[#a855f7] text-white p-4 w-full outline-none transition-colors">
+                </div>
+                <input type="text" placeholder="Tipo de Projeto (ex: Mixagem EP, Edição Podcast)" required class="bg-gray-900 border border-gray-800 focus:border-[#a855f7] text-white p-4 w-full outline-none transition-colors">
+                <textarea placeholder="Sua Mensagem..." rows="4" required class="bg-gray-900 border border-gray-800 focus:border-[#a855f7] text-white p-4 w-full outline-none transition-colors"></textarea>
+                
+                <button type="submit" class="w-full bg-gray-800 hover:bg-[#a855f7] text-white font-bold uppercase tracking-widest py-4 transition-colors duration-300">
+                    Enviar Mensagem
+                </button>
+            </form>
+
+            <div class="mt-16 text-center text-gray-600 text-sm">
+                <p>&copy; 2026 Anthonny Pedro Santos Araujo. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
